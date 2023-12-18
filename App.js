@@ -5,16 +5,22 @@ import JournalScreen from './screen/JournalScreen';
 import DesiresScreen from './screen/DesiresScreen';
 import RandomScreen from './screen/RandomScreen';
 
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Journal">
+
+      <Tab.Navigator>
+
         <Stack.Screen name="Journal" component={JournalScreen} />
         <Stack.Screen name="Desires" component={DesiresScreen} />
         <Stack.Screen name="Random" component={RandomScreen} />
-      </Stack.Navigator>
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
