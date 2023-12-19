@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, Button, ScrollView } from 'react-native';
 
 import { FAB } from 'react-native-paper';
 import JournalCard from '../components/JournalCard';
+import { fetchAllJournalEntries, fetchJournals } from '../api/database';
 
 
 
@@ -37,13 +38,27 @@ const mockJournals = [
 ];
 
 
+
+
+
 export default function JournalScreen({ navigation }) {
+    
+    const [journals, setJournals] = useState([]);
+
+
+    useEffect(() => {
+        // fetchAllJournalEntries().then(data => {
+        //     setJournals(data);
+        // });
+    }, []);
+
+
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>Journal Screen</Text>
             <ScrollView>
                 <View>
-                    {mockJournals.map((journal) => (
+                {journals.map((journal) => (
                         <JournalCard
                             key={journal.id}
                             title={journal.title}
